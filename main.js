@@ -14,7 +14,7 @@ function convert() {
 	// get the json
 	json = xmlToJson(xml)
 	// undefined and 2 makes it prettier with a tab spacing of 2
-	jsonText = JSON.stringify(json, undefined, 2)
+	jsonText = JSON.stringify(json, undefined, 4)
 
 	document.getElementById('output').value = jsonText
 }
