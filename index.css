@@ -10,6 +10,7 @@ body{
 	flex-direction: row;
 	width: 80%;
 	margin: auto;
+	height: calc(100% - 200px);
 }
 
 #title{
@@ -17,13 +18,18 @@ body{
 	font-weight: bold;
 	margin: auto;
 	text-align: center;
-	margin-top: 70px;
+	padding-top: 70px;
+	padding-bottom: 20px;
+}
+
 #description{
 	font-size: 20px;
 	text-align: center;
 	width: 70%;
 	margin: auto;
 }
+a{
+	color: white;
 }
 
 textarea {
@@ -32,6 +38,9 @@ textarea {
 	height: 400px;
 	color: black;
 	font-size: 15px;
+	border: 10px solid #CCCC00;
+	border-radius: 10px;
+	outline: none;
 }
 
 * {
