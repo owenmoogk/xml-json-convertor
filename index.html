@@ -9,7 +9,7 @@
 	<script src="main.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="convert()">
 	<div id="title">
 		XML To JSON
 	</div>
@@ -17,7 +17,16 @@
 		XML to JSON convertor for easy management, of files. Check out the source code on <a href="https://github.com/owenmoogk/xml-to-json">Github</a>!
 	</div>
 	<div id='main'>
-		<textarea type='text' id="input" onkeyup="convert()"></textarea>
+		<textarea type='text' id="input" onkeyup="convert()">
+&lt;breakfast_menu&gt;
+	&lt;food&gt;
+		&lt;name&gt;Belgian Waffles&lt;/name&gt;
+		&lt;price&gt;$5.95&lt;/price&gt;
+		&lt;description&gt;Two of our famous Belgian Waffles&lt;/description&gt;
+		&lt;calories&gt;650&lt;/calories&gt;
+	&lt;/food&gt;
+&lt;/breakfast_menu&gt;
+		</textarea>
 		<textarea type="text" id="output"></textarea>
 	</div>
 
