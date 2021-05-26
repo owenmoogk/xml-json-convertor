@@ -2,7 +2,7 @@ function convertJsonToXml() {
 	text = document.getElementById('json').value
 
 	// if the xml is empty then the json is empty
-	if (text == ""){
+	if (text == "") {
 		document.getElementById('xml').value = ""
 		return
 	}
@@ -12,6 +12,8 @@ function convertJsonToXml() {
 
 	// get the xml
 	xmlText = jsonToXml(json)
+
+	// format the text xml, the second param is the indentation value
 	xmlText = formatXml(xmlText, " ".repeat(parseInt(document.getElementById("spaceSelect").value)))
 
 	document.getElementById('xml').value = xmlText
@@ -19,35 +21,53 @@ function convertJsonToXml() {
 
 // recursive function to convert xml elements to json, returns obj at the end
 function jsonToXml(obj) {
+
+	// xml is going to be just a string
 	var xml = '';
+	
+	// loop thru json
 	for (var prop in obj) {
-	  xml += obj[prop] instanceof Array ? '' : "<" + prop + ">";
-	  if (obj[prop] instanceof Array) {
-		for (var array in obj[prop]) {
-		  xml += "<" + prop + ">";
-		  xml += jsonToXml(new Object(obj[prop][array]));
-		  xml += "</" + prop + ">";
+		xml += obj[prop] instanceof Array ? '' : "<" + prop + ">";
+
+		// if its an array
+		if (obj[prop] instanceof Array) {
+			for (var array in obj[prop]) {
+				xml += "<" + prop + ">";
+				xml += jsonToXml(new Object(obj[prop][array]));
+				xml += "</" + prop + ">";
+			}
+		} 
+		
+		// if its a dict
+		else if (typeof obj[prop] == "object") {
+			xml += jsonToXml(new Object(obj[prop]));
+		} 
+		
+		// any other datatype
+		else {
+			xml += obj[prop];
 		}
-	  } else if (typeof obj[prop] == "object") {
-		xml += jsonToXml(new Object(obj[prop]));
-	  } else {
-		xml += obj[prop];
-	  }
-	  xml += obj[prop] instanceof Array ? '' : "</" + prop + ">";
+
+		// adding tags if its not an array (otherwise we dont need anything)
+		xml += obj[prop] instanceof Array ? '' : "</" + prop + ">";
 	}
-	var xml = xml.replace(/<\/?[0-9]{1,}>/g, '');
-	console.log(xml)
+
 	return xml
 }
 
 
-function formatXml(xml, tab) { // tab = optional indent value, default is tab (\t)
-    var formatted = '', indent= '';
-    tab = tab || '\t';
-    xml.split(/>\s*</).forEach(function(node) {
-        if (node.match( /^\/\w/ )) indent = indent.substring(tab.length); // decrease indent by one 'tab'
-        formatted += indent + '<' + node + '>\r\n';
-        if (node.match( /^<?\w[^>]*[^\/]$/ )) indent += tab;              // increase indent
-    });
-    return formatted.substring(1, formatted.length-3);
+function formatXml(xml, tab) {
+
+	// formatted xml string, indent fluxuates as we format
+	var formatted = '', indent = '';
+
+	// stack overflow lol https://stackoverflow.com/a/49458964
+	xml.split(/>\s*</).forEach(function (node) {
+		// decrease indent by one 'tab'
+		if (node.match(/^\/\w/)) indent = indent.substring(tab.length);
+		formatted += indent + '<' + node + '>\r\n';
+		// increase indent
+		if (node.match(/^<?\w[^>]*[^\/]$/)) indent += tab;
+	});
+	return formatted.substring(1, formatted.length - 3);
 }
