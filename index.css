@@ -18,7 +18,7 @@ body{
 	font-weight: bold;
 	margin: auto;
 	text-align: center;
-	padding-top: 70px;
+	padding-top: 30px;
 	padding-bottom: 20px;
 }
 
@@ -43,6 +43,12 @@ textarea {
 	outline: none;
 }
 
+select{
+	background-color: white;
+	border: 5px solid  #CCCC00;
+	outline: none;
+}
+
 * {
 	font-family: 'PT Sans', sans-serif;
 }
@@ -50,5 +56,6 @@ textarea {
 @media screen and (max-width: 800px) {
 	#main {
 		flex-direction: column;
+		min-height: 600px;
 	}
 }
