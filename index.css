@@ -18,6 +18,12 @@ body{
 	margin: auto;
 	text-align: center;
 	margin-top: 70px;
+#description{
+	font-size: 20px;
+	text-align: center;
+	width: 70%;
+	margin: auto;
+}
 }
 
 textarea {
