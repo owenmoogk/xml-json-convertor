@@ -33,14 +33,32 @@ a{
 }
 
 textarea {
-	flex: 1;
-	margin: 20px;
-	height: 400px;
+	height: 100%;
+	width: 100%;
 	color: black;
 	font-size: 15px;
 	border: 10px solid #CCCC00;
 	border-radius: 10px;
 	outline: none;
+}
+
+#area1, #area2{
+	flex: 1;
+	margin: 20px;
+	height: 400px;
+}
+
+button{
+	position: relative;
+	top: -60px;
+	right: -15px;
+	background-color: #CCCC00;
+	border: none;
+	outline: none;
+	padding: 10px;
+	border-radius: 30px;
+	width: 75px;
+	font-size: 15px;
 }
 
 select{
