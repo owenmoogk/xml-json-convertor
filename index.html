@@ -6,10 +6,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>XML-JSON</title>
 	<link rel="stylesheet" href="index.css">
-	<script src="main.js"></script>
+	<script src="xmlToJson.js"></script>
+	<script src="jsonToXml.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
 </head>
-<body onload="convert()">
+<body onload="convertXmlToJson()">
 	<div id="title">
 		XML To JSON
 	</div>
@@ -18,7 +19,7 @@
 		<br><br>
 		<span id="settings">
 			Number of spaces:
-			<select name="spaces" id="spaceSelect" onchange="convert()">
+			<select name="spaces" id="spaceSelect">
 				<option value="2">2</option>
 				<option value="3">3</option>
 				<option value="4" selected>4</option>
@@ -27,7 +28,7 @@
 			</span>
 	</div>
 	<div id='main'>
-		<textarea type='text' id="input" onkeyup="convert()">
+		<textarea type='text' id="xml" onkeyup="convertXmlToJson()">
 &lt;breakfast_menu&gt;
 	&lt;food&gt;
 		&lt;name&gt;Belgian Waffles&lt;/name&gt;
@@ -36,8 +37,8 @@
 		&lt;calories&gt;650&lt;/calories&gt;
 	&lt;/food&gt;
 &lt;/breakfast_menu&gt;
-		</textarea>
-		<textarea type="text" id="output"></textarea>
+</textarea>
+		<textarea type="text" id="json" onkeyup="convertJsonToXml()"></textarea>
 	</div>
 
 	<!-- github corner -->

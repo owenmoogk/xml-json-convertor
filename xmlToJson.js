@@ -1,9 +1,9 @@
-function convert() {
-	text = document.getElementById('input').value
+function convertXmlToJson() {
+	text = document.getElementById('xml').value
 
-	// if the input is empty then the output is empty
+	// if the xml is empty then the json is empty
 	if (text == ""){
-		document.getElementById('output').value = ""
+		document.getElementById('json').value = ""
 		return
 	}
 
@@ -16,7 +16,7 @@ function convert() {
 	// undefined and 2 makes it prettier with a tab spacing of 2
 	jsonText = JSON.stringify(json, undefined, parseInt(document.getElementById("spaceSelect").value))
 
-	document.getElementById('output').value = jsonText
+	document.getElementById('json').value = jsonText
 }
 
 // recursive function to convert xml elements to json, returns obj at the end
